@@ -47,3 +47,9 @@ def recommend(movie):
         recommended.append(movies.iloc[i[0]].original_title)
     
     return recommended
+def recommend_by_genre(genre):
+    genre = genre.lower()
+    
+    filtered = movies[movies['genres'].str.lower().str.contains(genre)]
+    
+    return filtered['original_title'].head(3).tolist()
